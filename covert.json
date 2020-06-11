@@ -1,0 +1,3508 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "data dictionary api v1",
+    "version": "v1"
+  },
+  "paths": {
+    "/data/dictionary/query": {
+      "post": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DynamicRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DynamicRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DynamicRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/ecosystems": {
+      "get": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IEcoSystem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/ecosystem/{id}": {
+      "get": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEcoSystem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/ecosystem/{name}/env/{envid}/market/program/{marketprogramnumber}": {
+      "get": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "envid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEcoSystemConfig"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/ecosystem/lytics/config": {
+      "put": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EcoSystemConfigLytics"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EcoSystemConfigLytics"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EcoSystemConfigLytics"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEcoSystemConfigLytics"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/environments": {
+      "get": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IEnvironment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/environment/{id}": {
+      "get": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEnvironment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/show/tables": {
+      "get": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/describe/table/{name}": {
+      "get": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/sample": {
+      "get": {
+        "tags": [
+          "DataDictionary"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IMarketProgram"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/events": {
+      "get": {
+        "tags": [
+          "Event"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IEvent"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/event/{name}": {
+      "get": {
+        "tags": [
+          "Event"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "nested",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEvent"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/event/properties/{parentpropertyname}": {
+      "get": {
+        "tags": [
+          "Event"
+        ],
+        "parameters": [
+          {
+            "name": "parentpropertyname",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IEventProperty"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/event/{eventname}/property/{parentpropertyname}": {
+      "get": {
+        "tags": [
+          "Event"
+        ],
+        "parameters": [
+          {
+            "name": "eventname",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "parentpropertyname",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEventProperty"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/event/properties/regex/{eventname}": {
+      "get": {
+        "tags": [
+          "Event"
+        ],
+        "parameters": [
+          {
+            "name": "eventname",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IEventProperty"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/event/configs": {
+      "get": {
+        "tags": [
+          "Event"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IEventConfig"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/event/config/{parentpropertyname}": {
+      "get": {
+        "tags": [
+          "Event"
+        ],
+        "parameters": [
+          {
+            "name": "parentpropertyname",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IEventConfig"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/market/program/all": {
+      "get": {
+        "tags": [
+          "MarketProgram"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IMarketProgram"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/market/program/{number}": {
+      "get": {
+        "tags": [
+          "MarketProgram"
+        ],
+        "parameters": [
+          {
+            "name": "number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMarketProgram"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/market/program/add": {
+      "post": {
+        "tags": [
+          "MarketProgram"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketProgram"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketProgram"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketProgram"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMarketProgram"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/market/program/update": {
+      "post": {
+        "tags": [
+          "MarketProgram"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketProgram"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketProgram"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketProgram"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMarketProgram"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/workspaces": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SegmentWorkspace"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/workspace/{id}": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SegmentWorkspace"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/workspace/environment/{id}": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ISegmentWorkspace"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/sources": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ISegmentSource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/source/{id}": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ISegmentSource"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/source/environment/{envid}/market/program/{marketprogramnumber}": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "parameters": [
+          {
+            "name": "envid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ISegmentSource"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/source/workspace/{workspaceid}/market/program/{marketprogramnumber}": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "parameters": [
+          {
+            "name": "workspaceid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ISegmentSource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/source/workspace/{workspaceid}": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "parameters": [
+          {
+            "name": "workspaceid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ISegmentSource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/source/market/program/{marketprogramnumber}": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "parameters": [
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ISegmentSource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/source/add": {
+      "post": {
+        "tags": [
+          "Segment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentSource"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentSource"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentSource"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/source/tracking/plan": {
+      "put": {
+        "tags": [
+          "Segment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentSourceTrackingPlan"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentSourceTrackingPlan"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentSourceTrackingPlan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/destinations": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ISegmentDestination"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/segment/destination/{id}": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ISegmentDestination"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/tracking/plan/market/program/{marketprogramnumber}": {
+      "get": {
+        "tags": [
+          "TrackingPlan"
+        ],
+        "parameters": [
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ITraitMpTrackingPlan"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/tracking/plan/market/program/{marketprogramnumber}/trait/id/{traitid}": {
+      "get": {
+        "tags": [
+          "TrackingPlan"
+        ],
+        "parameters": [
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "traitid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ITraitMpTrackingPlan"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/tracking/plan/market/program/{marketprogramnumber}/trait/name/{traitname}": {
+      "get": {
+        "tags": [
+          "TrackingPlan"
+        ],
+        "parameters": [
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "traitname",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ITraitMpTrackingPlan"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/tracking/plan/market/program/{marketprogramnumber}/regex": {
+      "get": {
+        "tags": [
+          "TrackingPlan"
+        ],
+        "parameters": [
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ITraitMpTrackingPlan"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/tracking/plan/trait/data/type/distinct": {
+      "get": {
+        "tags": [
+          "TrackingPlan"
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ITraitMpTrackingPlan"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/trait/{id}": {
+      "get": {
+        "tags": [
+          "Trait"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ITrait"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/trait/mp/tracking/plan/{marketprogramnumber}": {
+      "get": {
+        "tags": [
+          "Trait"
+        ],
+        "parameters": [
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/trait/event/tracking/plan/{envid}/{marketprogramnumber}": {
+      "get": {
+        "tags": [
+          "Trait"
+        ],
+        "parameters": [
+          {
+            "name": "envid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "marketprogramnumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ecosystems",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/trait/add": {
+      "post": {
+        "tags": [
+          "Trait"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trait"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trait"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trait"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ITrait"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/traits/add": {
+      "post": {
+        "tags": [
+          "Trait"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Trait"
+                },
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Trait"
+                },
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Trait"
+                },
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ITrait"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/ecosystem/trait/{id}": {
+      "get": {
+        "tags": [
+          "Trait"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEcoSystemTrait"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/ecosystem/traits/{traitid}": {
+      "get": {
+        "tags": [
+          "Trait"
+        ],
+        "parameters": [
+          {
+            "name": "ecosystems",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "traitid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEcoSystemTrait"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/ecosystem/{ecosystemid}/trait/{name}": {
+      "get": {
+        "tags": [
+          "Trait"
+        ],
+        "parameters": [
+          {
+            "name": "ecosystemid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEcoSystemTrait"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/ecosystem/{ecosystemid}/name/{name}": {
+      "get": {
+        "tags": [
+          "Trait"
+        ],
+        "parameters": [
+          {
+            "name": "ecosystemid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IEcoSystemTrait"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/dictionary/trait/search": {
+      "get": {
+        "tags": [
+          "Trait"
+        ],
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ITrait"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DynamicRequest": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": {
+          "type": "object"
+        }
+      },
+      "IEcoSystem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "aliasName": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "EcoSystem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "aliasName": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "LegalEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "org": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Country": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "legalEntityId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "code2Char": {
+            "type": "string",
+            "nullable": true
+          },
+          "legalEntity": {
+            "$ref": "#/components/schemas/LegalEntity"
+          }
+        }
+      },
+      "MarketProgram": {
+        "type": "object",
+        "properties": {
+          "marketProgramNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "legalEntityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "marketProgramName": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "legalEntityId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mpBusinessName": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "$ref": "#/components/schemas/Country"
+          },
+          "legalEntity": {
+            "$ref": "#/components/schemas/LegalEntity"
+          }
+        }
+      },
+      "Environment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "IEcoSystemConfig": {
+        "type": "object",
+        "properties": {
+          "ecoSystemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ecoSystem": {
+            "$ref": "#/components/schemas/EcoSystem"
+          },
+          "marketProgramNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "marketProgram": {
+            "$ref": "#/components/schemas/MarketProgram"
+          },
+          "envId": {
+            "type": "string",
+            "nullable": true
+          },
+          "environment": {
+            "$ref": "#/components/schemas/Environment"
+          }
+        }
+      },
+      "EcoSystemConfigLytics": {
+        "type": "object",
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "authToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "ecoSystemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ecoSystem": {
+            "$ref": "#/components/schemas/EcoSystem"
+          },
+          "marketProgramNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "marketProgram": {
+            "$ref": "#/components/schemas/MarketProgram"
+          },
+          "envId": {
+            "type": "string",
+            "nullable": true
+          },
+          "environment": {
+            "$ref": "#/components/schemas/Environment"
+          }
+        }
+      },
+      "IEcoSystemConfigLytics": {
+        "type": "object",
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "authToken": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "IEnvironment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "IMarketProgram": {
+        "type": "object",
+        "properties": {
+          "marketProgramNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "legalEntityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "marketProgramName": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "legalEntityId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mpBusinessName": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "$ref": "#/components/schemas/Country"
+          },
+          "legalEntity": {
+            "$ref": "#/components/schemas/LegalEntity"
+          }
+        }
+      },
+      "EventProperty": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataType": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sampleValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "regex": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventProperty"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "IEvent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "typeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "subTypeCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventProperty"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "IEventProperty": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataType": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sampleValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "regex": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventProperty"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "Event": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "typeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "subTypeCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventProperty"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "IEventConfig": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "eventName": {
+            "type": "string",
+            "nullable": true
+          },
+          "event": {
+            "$ref": "#/components/schemas/Event"
+          },
+          "propertyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "property": {
+            "$ref": "#/components/schemas/EventProperty"
+          },
+          "parentPropertyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentProperty": {
+            "$ref": "#/components/schemas/EventProperty"
+          }
+        }
+      },
+      "SegmentWorkspace": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "envId": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "environment": {
+            "$ref": "#/components/schemas/Environment"
+          }
+        }
+      },
+      "ISegmentWorkspace": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "envId": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "environment": {
+            "$ref": "#/components/schemas/Environment"
+          }
+        }
+      },
+      "PgDataSource": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "consumerFacingDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "systemDisplayingPage": {
+            "type": "string",
+            "nullable": true
+          },
+          "agencyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "noticeImageCapture": {
+            "type": "string",
+            "nullable": true
+          },
+          "ropaId": {
+            "type": "string",
+            "nullable": true
+          },
+          "noticeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionOfProcess": {
+            "type": "string",
+            "nullable": true
+          },
+          "businessFacingName": {
+            "type": "string",
+            "nullable": true
+          },
+          "registrationPageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataType": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactInfo": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ISegmentSource": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "segmentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "techName": {
+            "type": "string",
+            "nullable": true
+          },
+          "workspaceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "workspace": {
+            "$ref": "#/components/schemas/SegmentWorkspace"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "catalogName": {
+            "type": "string",
+            "nullable": true
+          },
+          "writeKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelRegion": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelCluster": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelGeography": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelGrgUnit": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelMktProgram": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "labels": {
+            "type": "object",
+            "nullable": true,
+            "readOnly": true
+          },
+          "marketProgramNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "marketProgram": {
+            "$ref": "#/components/schemas/MarketProgram"
+          },
+          "pgDataSourceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pgDataSource": {
+            "$ref": "#/components/schemas/PgDataSource"
+          }
+        }
+      },
+      "SegmentSource": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "segmentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "techName": {
+            "type": "string",
+            "nullable": true
+          },
+          "workspaceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "workspace": {
+            "$ref": "#/components/schemas/SegmentWorkspace"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "catalogName": {
+            "type": "string",
+            "nullable": true
+          },
+          "writeKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelRegion": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelCluster": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelGeography": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelGrgUnit": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelMktProgram": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "labels": {
+            "type": "object",
+            "nullable": true,
+            "readOnly": true
+          },
+          "marketProgramNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "marketProgram": {
+            "$ref": "#/components/schemas/MarketProgram"
+          },
+          "pgDataSourceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pgDataSource": {
+            "$ref": "#/components/schemas/PgDataSource"
+          }
+        }
+      },
+      "SegmentSourceTrackingPlan": {
+        "type": "object",
+        "properties": {
+          "marketProgramNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "segmentSourceName": {
+            "type": "string",
+            "nullable": true
+          },
+          "segmentSourceWriteKeys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "segmentTrackingPlanName": {
+            "type": "string",
+            "nullable": true
+          },
+          "envId": {
+            "type": "string",
+            "nullable": true
+          },
+          "lyticsAuthorizationToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "segmentDestinationName": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ISegmentDestination": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workspaceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "apiKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "catalogName": {
+            "type": "string",
+            "nullable": true
+          },
+          "marketProgramNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workspace": {
+            "$ref": "#/components/schemas/SegmentWorkspace"
+          }
+        }
+      },
+      "Trait": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "personalData": {
+            "type": "boolean"
+          },
+          "dataType": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataClass": {
+            "type": "string",
+            "nullable": true
+          },
+          "segmentTraitType": {
+            "type": "string",
+            "nullable": true
+          },
+          "property": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastUpdate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastUpdateBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "ecoSystem": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        }
+      },
+      "ITraitMpTrackingPlan": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "marketProgramNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "traitId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "traitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "regex": {
+            "type": "string",
+            "nullable": true
+          },
+          "marketProgram": {
+            "$ref": "#/components/schemas/MarketProgram"
+          },
+          "trait": {
+            "$ref": "#/components/schemas/Trait"
+          }
+        }
+      },
+      "EcoSystemTrait": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ecoSystemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataType": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataClass": {
+            "type": "string",
+            "nullable": true
+          },
+          "segmentTraitType": {
+            "type": "string",
+            "nullable": true
+          },
+          "traitId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "traitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastUpdate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastUpdateBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "trait": {
+            "$ref": "#/components/schemas/Trait"
+          },
+          "ecoSystem": {
+            "$ref": "#/components/schemas/EcoSystem"
+          }
+        }
+      },
+      "ITrait": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "personalData": {
+            "type": "boolean"
+          },
+          "dataType": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataClass": {
+            "type": "string",
+            "nullable": true
+          },
+          "segmentTraitType": {
+            "type": "string",
+            "nullable": true
+          },
+          "property": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastUpdate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastUpdateBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "ecoSystemTraits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EcoSystemTrait"
+            },
+            "nullable": true
+          },
+          "ecoSystem": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        }
+      },
+      "IEcoSystemTrait": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ecoSystemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataType": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataClass": {
+            "type": "string",
+            "nullable": true
+          },
+          "segmentTraitType": {
+            "type": "string",
+            "nullable": true
+          },
+          "traitId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "traitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastUpdate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastUpdateBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "trait": {
+            "$ref": "#/components/schemas/Trait"
+          },
+          "ecoSystem": {
+            "$ref": "#/components/schemas/EcoSystem"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Basic": {
+        "type": "apiKey",
+        "description": "Basic Authorization header using the Basic scheme. \r\n\r\nEnter 'Basic' [space] and then your token in the text input below\r\n\r\nExample: 'Basic 12345abcdef'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Basic": [ ]
+    }
+  ]
+}
